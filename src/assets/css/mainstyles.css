@@ -1,0 +1,28 @@
+.font8 {
+    font-size: 0.8rem !important;
+}
+
+.font9 {
+    font-size: 0.9rem !important;
+}
+
+.font600 {
+    font-weight: 600 !important;
+}
+
+.minhyt70 {
+    min-height: 78.6vh;
+}
+
+.w-15 {
+    width: 15% !important;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
+.normal-link {
+    text-decoration: none;
+    color: #000;
+}

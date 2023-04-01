@@ -1,0 +1,74 @@
+<div class="container-fluid py-2 border-bottom">
+  <div class="d-flex justify-content-between">
+    <p class="mb-0">Welcome to <label class="font600">Roolant Kids</label></p>
+    <a href="javascript:void(0)" class="text-decoration-none text-dark"
+      >Login / Register</a
+    >
+  </div>
+</div>
+<nav class="navbar shadow-sm">
+  <div class="container-fluid d-flex justify-content-between">
+    <a href="javascript:void(0)" routerLink="/" class="navbar-brand"
+      ><img src="../../../assets/images/roolantkidsLogo.jpeg" alt=""
+    /></a>
+    <div>
+      <ul class="nav mb-0 nav-tabs menus border-0" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link border-0 text-secondary"
+            id="home-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#home"
+            type="button"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+          >
+            Home
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            routerLink="/about-us"
+            routerLinkActive="active"
+            class="nav-link border-0 text-secondary"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#profile"
+            type="button"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+          >
+            About Us
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            routerLinkActive="active"
+            routerLink="/shop"
+            class="nav-link border-0 text-secondary"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#contact"
+            type="button"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+          >
+            Shop
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label
+        ><a href="javascript:void(0)"
+          ><i class="fa-solid fa-cart-shopping"></i></a
+      ></label>
+    </div>
+  </div>
+</nav>

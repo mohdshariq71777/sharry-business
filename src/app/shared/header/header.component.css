@@ -1,0 +1,9 @@
+.navbar-brand img {
+    width: 140px;
+}
+
+.menus .nav-link.active {
+    border-bottom: 2px solid #646464 !important;
+    color: #646464;
+    font-weight: 600;
+}

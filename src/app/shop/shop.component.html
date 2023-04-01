@@ -1,0 +1,524 @@
+<app-header></app-header>
+<div class="container-fluid minhyt70">
+  <div class="row gx-3 gy-2">
+    <div class="col-sm-12">
+      <div class="row mt-2 p-2 bg-light m-0 align-items-center">
+        <div class="col-sm-1">
+          <h6 class="mb-0">Filter by :</h6>
+        </div>
+        <div class="col-sm-11">
+          <ul
+            class="nav nav-tabs border-0 mb-0 filters"
+            id="myTab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="color-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#color"
+                type="button"
+                role="tab"
+              >
+                Color
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="productType-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#productType"
+                type="button"
+                role="tab"
+              >
+                Product Type
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="size-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#size"
+                type="button"
+                role="tab"
+                aria-controls="size"
+                aria-selected="false"
+              >
+                Size
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="price-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#price"
+                type="button"
+                role="tab"
+                aria-controls="price"
+                aria-selected="false"
+              >
+                Price
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-12 px-5 pt-2">
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="color"
+              role="tabpanel"
+              aria-labelledby="color-tab"
+            >
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <label for="red" class="form-check-label">Red</label>
+                    <input id="red" type="checkbox" class="form-check-input" />
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <label for="blue" class="form-check-label">Blue</label>
+                    <input id="blue" type="checkbox" class="form-check-input" />
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <label for="green" class="form-check-label">Green</label>
+                    <input
+                      id="green"
+                      type="checkbox"
+                      class="form-check-input"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="productType" role="tabpanel">
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="productType"
+                      #tee
+                      id="tee"
+                      class="form-check-input"
+                      type="radio"
+                    />
+                    <label class="form-check-label" for="tee"> T-Shirts </label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="productType"
+                      #shoes
+                      id="shoe"
+                      class="form-check-input"
+                      type="radio"
+                    />
+                    <label class="form-check-label" for="shoe"> Shoe </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-check">
+                    <input
+                      name="productType"
+                      #allTypes
+                      id="allTypes"
+                      class="form-check-input"
+                      type="radio"
+                      checked
+                    />
+                    <label class="form-check-label" for="allTypes">
+                      All Types
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    class="btn btn-sm btn-success"
+                    (click)="fByType(tee, shoes, allTypes)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="size"
+              role="tabpanel"
+              aria-labelledby="size-tab"
+            >
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="sizeFilters"
+                      #xl
+                      id="xl"
+                      class="form-check-input"
+                      type="radio"
+                    />
+                    <label class="form-check-label" for="xl"> 11-5 </label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="sizeFilters"
+                      #l
+                      id="l"
+                      class="form-check-input"
+                      type="radio"
+                    />
+                    <label class="form-check-label" for="l"> 7-10 </label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="sizeFilters"
+                      #m
+                      id="m"
+                      class="form-check-input"
+                      type="radio"
+                    />
+                    <label class="form-check-label" for="m"> 3-6 </label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      name="sizeFilters"
+                      #allSizes
+                      id="allSize"
+                      class="form-check-input"
+                      type="radio"
+                      checked
+                    />
+                    <label class="form-check-label" for="allSize"> All </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    class="btn btn-sm btn-success"
+                    (click)="fBySizes(xl, l, m, allSizes)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="price"
+              role="tabpanel"
+              aria-labelledby="price-tab"
+            >
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="form-check">
+                    <input
+                      #lt250
+                      class="form-check-input"
+                      type="radio"
+                      name="priceFilter"
+                      id="lt250"
+                      value="lt250"
+                    />
+                    <label class="form-check-label" for="lt250">
+                      Under 250
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-check">
+                    <input
+                      #gt250
+                      class="form-check-input"
+                      type="radio"
+                      name="priceFilter"
+                      id="gt250"
+                      value="gt250"
+                    />
+                    <label class="form-check-label" for="gt250">
+                      Above 250
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-check">
+                    <input
+                      #unc
+                      class="form-check-input"
+                      type="radio"
+                      name="priceFilter"
+                      id="unc"
+                      value="unc"
+                      checked
+                    />
+                    <label class="form-check-label" for="unc"> All </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    class="btn btn-sm btn-success"
+                    (click)="fByPrice(lt250, gt250, unc)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3" *ngFor="let pro of uncat; let i = index">
+      <div class="card border-0">
+        <img
+          src="../../assets/images/{{ pro.imgs[0] }}"
+          class="img-fluid"
+          alt=""
+        />
+        <div class="card-body border-0 text-center">
+          <h6 class="card-title mb-1">{{ pro.desc }}</h6>
+          <p class="text-center mb-0">
+            <span class="text-decoration-line-through text-secondary"
+              >{{ pro.showMrp ? "MRP ₹" : "" }}{{ pro.showMrp }}</span
+            >
+            <span class="productPrice"> ₹{{ pro.showPrice }}</span>
+          </p>
+
+          <p class="mb-1">
+            <span class="fw-bold font9">Available Sizes :</span>
+            <span class=""> {{ pro.TitleSizes }}</span>
+          </p>
+          <span class="text-danger font600">{{ pro.uncatOffer }}% off</span>
+          <ul
+            class="nav nav-tabs mb-0 border-0 sizes justify-content-center"
+            id="myTab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link navLinkAll border-0 active"
+                id="{{ 'xl' + i }}"
+                (click)="filterSize(pro, 'xl')"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                11-5
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSize(pro, 'l')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'l' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                7-10
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSize(pro, 'm')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'm' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                3-6
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row gx-3 gy-2">
+    <div class="col-sm-12 text-center">
+      <h5 class="mt-3 font600 text-danger">Top Products</h5>
+    </div>
+    <div class="col-sm-3" *ngFor="let topPro of topProducts; let i = index">
+      <div class="card border-0">
+        <img
+          src="../../assets/images/{{ topPro.imgs[0] }}"
+          class="img-fluid"
+          alt=""
+        />
+        <div class="card-body border-0 text-center">
+          <h6 class="card-title mb-1">{{ topPro.desc }}</h6>
+          <p class="text-center mb-0">
+            <span class="text-decoration-line-through text-secondary"
+              >{{ topPro.showTopMrp ? "MRP ₹" : ""
+              }}{{ topPro.showTopMrp }}</span
+            >
+            <span class="productPrice"> ₹{{ topPro.showTopPrice }}</span>
+          </p>
+          <p class="mb-1">
+            <span class="fw-bold font9">Available Sizes :</span>
+            <span class=""> {{ topPro.TitleSizes }}</span>
+            <span class="text-danger font600">{{ topPro.topOffer }}% off</span>
+          </p>
+          <ul
+            class="nav nav-tabs mb-0 border-0 sizes justify-content-center"
+            id="myTab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link navLinkAll border-0 active"
+                id="{{ 'xl' + i }}"
+                (click)="filterSizeTop(topPro, 'xl')"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                11-5
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSizeTop(topPro, 'l')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'l' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                7-10
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSizeTop(topPro, 'm')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'm' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                3-6
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gx-3 gy-2">
+    <div class="col-sm-12 text-center">
+      <h5 class="mt-3 font600 text-success">Popular Products</h5>
+    </div>
+    <div class="col-sm-3" *ngFor="let popPro of popularProducts; let i = index">
+      <div class="card border-0">
+        <img
+          src="../../assets/images/{{ popPro.imgs[0] }}"
+          class="img-fluid"
+          alt=""
+        />
+        <div class="card-body border-0 text-center">
+          <h6 class="card-title mb-1">{{ popPro.desc }}</h6>
+          <p class="text-center mb-0">
+            <span class="text-decoration-line-through text-secondary"
+              >{{ popPro.showPopMrp ? "MRP ₹" : ""
+              }}{{ popPro.showPopMrp }}</span
+            >
+            <span class="productPrice"> ₹{{ popPro.showPopPrice }}</span>
+          </p>
+          <p class="mb-1">
+            <span class="fw-bold font9">Available Sizes :</span>
+            <span class=""> {{ popPro.TitleSizes }}</span>
+            <span class="text-danger font600">{{ popPro.popOffer }}% off</span>
+          </p>
+          <ul
+            class="nav nav-tabs mb-0 border-0 sizes justify-content-center"
+            id="myTab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link navLinkAll border-0 active"
+                id="{{ 'xl' + i }}"
+                (click)="filterSizePop(popPro, 'xl')"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                11-5
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSizePop(popPro, 'l')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'l' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                7-10
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                (click)="filterSizePop(popPro, 'm')"
+                class="nav-link navLinkAll border-0"
+                id="{{ 'm' + i }}"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                3-6
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <input type="text" #inputtext />
+<button (click)="getInputInfo(inputtext)">btn</button> -->
+<app-footer></app-footer>

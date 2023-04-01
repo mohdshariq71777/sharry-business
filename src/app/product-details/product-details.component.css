@@ -1,0 +1,35 @@
+.smaller {
+  height: 70px;
+  width: 80px;
+}
+
+.sample {
+  height: 75vh;
+  width: 100%;
+}
+
+.link {
+  font-size: 12px;
+}
+
+.overall {
+  font-size: 18px;
+}
+
+.star {
+  height: 15px;
+  width: 15px;
+}
+
+.shoes-design {
+  height: 35vh;
+  width: 100%;
+}
+
+.link-btn {
+  font-size: 5px;
+}
+
+.links {
+  font-size: 13px;
+}
