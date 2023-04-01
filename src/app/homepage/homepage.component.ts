@@ -49,7 +49,7 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     if (this.localdata) {
       this.cartProducts = this.localdata;
     }
-    console.log("Final Commit")
+
   }
   detailsPage(pro) {
     this.prdSrvc.detailsPage(pro)
@@ -61,7 +61,6 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     else {
       pro.quantity++;
     }
-    console.log(pro)
     pro.cartPrice = Number(pro.price * pro.quantity).toFixed(2);
     this.totalPrice = this.cartProducts.reduce((a, pro) => Number(pro.cartPrice + a).toFixed(2), 0);
     this.totalPrice = this.cartProducts.reduce((a, prod) => (Number(prod.cartPrice + a).toFixed(2)), 0)
@@ -94,7 +93,7 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
   filterSize(pro, size) {
     this.prdSrvc.filterSize(pro, size)
     this.proSize = this.prdSrvc.proSize;
-    console.log(this.proSize)
+    console.log('Size Filters')
   }
   filterLatest() {
     this.latest = this.allproducts.filter(pro => (pro.article) > 104)
