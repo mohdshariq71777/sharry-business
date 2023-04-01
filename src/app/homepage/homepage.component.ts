@@ -49,6 +49,7 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     if (this.localdata) {
       this.cartProducts = this.localdata;
     }
+    console.log("Final Commit")
   }
   detailsPage(pro) {
     this.prdSrvc.detailsPage(pro)
