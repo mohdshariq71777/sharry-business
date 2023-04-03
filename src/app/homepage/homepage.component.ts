@@ -16,11 +16,13 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
   productLsize: any;
   productMsize: any;
   products: any;
-  cartProducts: any = [];
+  cartProducts: any;
   totalPrice: any;
-  localdata: any = [];
+  localdata: any
   proSize: string;
   ngOnInit(): void {
+    this.cartProducts = [];
+    this.localdata = [];
     this.allproducts = this.prdSrvc.products;
     this.allproducts.forEach(pro => pro.xlSize = pro.price)
     this.allproducts.forEach(pro => pro.lSize = pro.price - 10)
@@ -44,16 +46,22 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     this.allproducts.forEach(pro => pro.offer = (100 - (pro.price / pro.mrp * 100)).toFixed(2))
     this.proSize = "xl";
     this.allproducts.forEach(pro => pro.curSize = this.proSize)
-    // this.localdata =
     this.getLocalStorage()
-    if (this.localdata) {
-      this.cartProducts = this.localdata;
-    }
-
+    this.cartProducts = this.localdata ? this.localdata : this.cartProducts;
   }
   detailsPage(pro) {
     this.prdSrvc.detailsPage(pro)
   }
+
+  filterSize(pro, size) {
+    this.prdSrvc.filterSize(pro, size)
+    this.proSize = this.prdSrvc.proSize;
+  }
+  filterLatest() {
+    this.latest = this.allproducts.filter(pro => (pro.article) > 104)
+  }
+
+  //For Cart
   addToCart(pro) {
     if (!this.cartProducts.includes(pro)) {
       this.cartProducts.push(pro);
@@ -90,19 +98,13 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     this.cartProducts.forEach(prod => allPrices.push(Number.parseFloat(prod.cartPrice)))
     this.totalPrice = (allPrices.reduce((a, pr) => (a + pr), 0)).toFixed(2);
   };
-  filterSize(pro, size) {
-    this.prdSrvc.filterSize(pro, size)
-    this.proSize = this.prdSrvc.proSize;
-    console.log('Size Filters')
-  }
-  filterLatest() {
-    this.latest = this.allproducts.filter(pro => (pro.article) > 104)
-  }
+
+  //For Local Storage
   setLocalStorage(data) {
-    localStorage.setItem('cart', JSON.stringify(data))
+    this.prdSrvc.setLocalStorage(data)
   }
   getLocalStorage() {
-    this.localdata = JSON.parse(localStorage.getItem('cart'))
+    this.localdata = this.prdSrvc.getLocalStorage()
   }
   ngAfterViewChecked(): void {
 

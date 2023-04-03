@@ -11,11 +11,16 @@ export class ShopComponent implements OnInit {
   popularProducts: any;
   topProducts: any;
   uncat: any;
-  constructor(private productsService: ProductServiceService) { }
+  localdata: any;
+  cartProducts: any;
+  totalPrice: any;
+  constructor(private prdSrvc: ProductServiceService) { }
 
   ngOnInit(): void {
+    this.cartProducts = [];
+    this.localdata = [];
     //For All Products
-    this.allProducts = this.productsService.products;
+    this.allProducts = this.prdSrvc.products;
     this.allProducts.forEach(pro => pro.xlSize = pro.price)
     this.allProducts.forEach(pro => pro.lSize = pro.price - 10)
     this.allProducts.forEach(pro => pro.mSize = pro.price - 20)
@@ -34,6 +39,7 @@ export class ShopComponent implements OnInit {
       }
     })
     this.allProducts.forEach(pro => pro.offer = (100 - (pro.price / pro.mrp * 100)).toFixed(2))
+    this.allProducts.forEach(pro => pro.quantity = 1);
     //For Uncategorized Products
     this.uncat = this.allProducts
     this.uncat.forEach(pro => pro.showPrice = pro.price)
@@ -71,6 +77,7 @@ export class ShopComponent implements OnInit {
     this.topProducts.forEach(pro => pro.showTopMrp = pro.mrp)
     this.topProducts.forEach(pro => pro.offer = (100 - (pro.showTopPrice / pro.showTopMrp * 100)).toFixed(2))
     this.topProducts.forEach(pro => pro.topOffer = pro.offer)
+    this.cartProducts = this.localdata ? this.localdata : this.cartProducts;
   }
 
   // **Filter by Size**
@@ -142,5 +149,51 @@ export class ShopComponent implements OnInit {
     if (l.checked) this.uncat = this.allProducts.filter(pro => pro.sizes.includes("l"))
     if (m.checked) this.uncat = this.allProducts.filter(pro => pro.sizes.includes("m"))
     if (all.checked) this.uncat = this.allProducts.filter(pro => pro)
+  }
+
+  //For Cart
+  addToCart(pro) {
+    if (!this.cartProducts.includes(pro)) {
+      this.cartProducts.push(pro);
+    }
+    else {
+      pro.quantity++;
+    }
+    pro.cartPrice = Number(pro.price * pro.quantity).toFixed(2);
+    this.totalPrice = this.cartProducts.reduce((a, pro) => Number(pro.cartPrice + a).toFixed(2), 0);
+    this.totalPrice = this.cartProducts.reduce((a, prod) => (Number(prod.cartPrice + a).toFixed(2)), 0)
+    const allPrices = [];
+    this.setLocalStorage(this.cartProducts)
+    this.cartProducts.forEach(prod => allPrices.push(Number.parseFloat(prod.cartPrice)))
+    this.totalPrice = (allPrices.reduce((a, pr) => (a + pr), 0)).toFixed(2);
+  };
+  removeItem(ind, pro) {
+    this.cartProducts.splice(ind, 1)
+    this.getLocalStorage();
+    this.localdata.splice(ind, 1)
+    this.setLocalStorage(this.localdata)
+    this.totalPrice = (this.totalPrice - pro.cartPrice).toFixed(2);
+    pro.quantity = 1;
+    pro.cartPrice = (pro.price * pro.quantity).toFixed(2);
+  }
+  clearCart() {
+    this.totalPrice = 0;
+    this.cartProducts.forEach(cartPro => cartPro.quantity = 1)
+    this.cartProducts = [];
+    localStorage.removeItem('cart');
+  }
+  changeQuant(e, pro) {
+    pro.cartPrice = (pro.price * pro.quantity).toFixed(2);
+    const allPrices = [];
+    this.cartProducts.forEach(prod => allPrices.push(Number.parseFloat(prod.cartPrice)))
+    this.totalPrice = (allPrices.reduce((a, pr) => (a + pr), 0)).toFixed(2);
+  };
+
+  //For Local Storage
+  setLocalStorage(data) {
+    this.prdSrvc.setLocalStorage(data)
+  }
+  getLocalStorage() {
+    this.localdata = this.prdSrvc.getLocalStorage()
   }
 }

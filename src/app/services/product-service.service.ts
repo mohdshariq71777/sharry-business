@@ -53,5 +53,10 @@ export class ProductServiceService {
     if (localStorage.getItem('detPro')) localStorage.removeItem('detPro')
     localStorage.setItem('detPro', JSON.stringify(pro))
   }
-
+  setLocalStorage(data) {
+    localStorage.setItem('cart', JSON.stringify(data))
+  }
+  getLocalStorage() {
+    return JSON.parse(localStorage.getItem('cart'))
+  }
 }
