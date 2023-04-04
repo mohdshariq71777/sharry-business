@@ -15,18 +15,6 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link active"
-                id="color-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#color"
-                type="button"
-                role="tab"
-              >
-                Color
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
                 id="productType-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#productType"
@@ -70,36 +58,9 @@
           <div class="tab-content" id="myTabContent">
             <div
               class="tab-pane fade show active"
-              id="color"
+              id="productType"
               role="tabpanel"
-              aria-labelledby="color-tab"
             >
-              <div class="row">
-                <div class="col-sm-1">
-                  <div class="form-check">
-                    <label for="red" class="form-check-label">Red</label>
-                    <input id="red" type="checkbox" class="form-check-input" />
-                  </div>
-                </div>
-                <div class="col-sm-1">
-                  <div class="form-check">
-                    <label for="blue" class="form-check-label">Blue</label>
-                    <input id="blue" type="checkbox" class="form-check-input" />
-                  </div>
-                </div>
-                <div class="col-sm-1">
-                  <div class="form-check">
-                    <label for="green" class="form-check-label">Green</label>
-                    <input
-                      id="green"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="productType" role="tabpanel">
               <div class="row">
                 <div class="col-sm-1">
                   <div class="form-check">
@@ -166,7 +127,7 @@
                       class="form-check-input"
                       type="radio"
                     />
-                    <label class="form-check-label" for="xl"> 11-5 </label>
+                    <label class="form-check-label" for="xl"> X Large </label>
                   </div>
                 </div>
                 <div class="col-sm-1">
@@ -178,7 +139,7 @@
                       class="form-check-input"
                       type="radio"
                     />
-                    <label class="form-check-label" for="l"> 7-10 </label>
+                    <label class="form-check-label" for="l"> Large </label>
                   </div>
                 </div>
                 <div class="col-sm-1">
@@ -190,7 +151,7 @@
                       class="form-check-input"
                       type="radio"
                     />
-                    <label class="form-check-label" for="m"> 3-6 </label>
+                    <label class="form-check-label" for="m"> Medium </label>
                   </div>
                 </div>
                 <div class="col-sm-1">
@@ -226,30 +187,43 @@
                 <div class="col-sm-2">
                   <div class="form-check">
                     <input
-                      #lt250
+                      #u5k
                       class="form-check-input"
                       type="radio"
                       name="priceFilter"
-                      id="lt250"
-                      value="lt250"
+                      id="u5k"
+                      value="u5k"
                     />
-                    <label class="form-check-label" for="lt250">
-                      Under 250
+                    <label class="form-check-label" for="u5k"> Under 5K </label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-check">
+                    <input
+                      #u10k
+                      class="form-check-input"
+                      type="radio"
+                      name="priceFilter"
+                      id="u10k"
+                      value="u10k"
+                    />
+                    <label class="form-check-label" for="u10k">
+                      Under 10K
                     </label>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="form-check">
                     <input
-                      #gt250
+                      #a10k
                       class="form-check-input"
                       type="radio"
                       name="priceFilter"
-                      id="gt250"
-                      value="gt250"
+                      id="a10k"
+                      value="a10k"
                     />
-                    <label class="form-check-label" for="gt250">
-                      Above 250
+                    <label class="form-check-label" for="a10k">
+                      Above 10K
                     </label>
                   </div>
                 </div>
@@ -270,7 +244,7 @@
                 <div class="col-sm-2">
                   <button
                     class="btn btn-sm btn-success"
-                    (click)="fByPrice(lt250, gt250, unc)"
+                    (click)="fByPrice(u5k, u10k, a10k, unc)"
                   >
                     Submit
                   </button>

@@ -64,7 +64,7 @@ export class ShopComponent implements OnInit {
     // this.uncat.forEach(pro => pro.sizes.forEach(size => console.log(size.toUpperCase())))
 
     // **Filter Popular Product**
-    this.popularProducts = this.allProducts.filter(pro => pro.article > 103);
+    this.popularProducts = this.allProducts.filter(pro => pro.article > 106);
     this.popularProducts.forEach(pro => pro.showPopPrice = pro.price)
     this.popularProducts.forEach(pro => pro.showPopMrp = pro.mrp)
     this.popularProducts.forEach(pro => pro.offer = (100 - (pro.showPopPrice / pro.showPopMrp * 100)).toFixed(2))
@@ -72,7 +72,7 @@ export class ShopComponent implements OnInit {
 
 
     // **Filter Top Product**
-    this.topProducts = this.allProducts.filter(pro => pro.price > 280);
+    this.topProducts = this.allProducts.filter(pro => pro.price > 6000);
     this.topProducts.forEach(pro => pro.showTopPrice = pro.price)
     this.topProducts.forEach(pro => pro.showTopMrp = pro.mrp)
     this.topProducts.forEach(pro => pro.offer = (100 - (pro.showTopPrice / pro.showTopMrp * 100)).toFixed(2))
@@ -134,9 +134,10 @@ export class ShopComponent implements OnInit {
   }
 
   // **Filter by Price**
-  fByPrice(lt250, gt250, uncat) {
-    if (lt250.checked) this.uncat = this.allProducts.filter(pro => pro.price <= 250)
-    if (gt250.checked) this.uncat = this.allProducts.filter(pro => pro.price > 250)
+  fByPrice(u5k, u10k, a10k, uncat) {
+    if (u5k.checked) this.uncat = this.allProducts.filter(pro => pro.price <= 5000)
+    if (u10k.checked) this.uncat = this.allProducts.filter(pro => pro.price <= 10000)
+    if (a10k.checked) this.uncat = this.allProducts.filter(pro => pro.price > 10000)
     if (uncat.checked) this.uncat = this.allProducts;
   }
   fByType(tee, shoes, both) {

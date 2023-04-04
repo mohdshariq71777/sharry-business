@@ -10,7 +10,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ProductServiceService } from './services/product-service.service';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-
+import { HttpClientModule } from '@angular/common/http'
 const approutes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'about-us', component: AboutUsComponent },
@@ -30,7 +30,8 @@ const approutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(approutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [ProductServiceService],

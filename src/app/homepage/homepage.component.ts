@@ -48,11 +48,11 @@ export class HomepageComponent implements OnInit, AfterViewChecked {
     this.allproducts.forEach(pro => pro.curSize = this.proSize)
     this.getLocalStorage()
     this.cartProducts = this.localdata ? this.localdata : this.cartProducts;
+    this.prdSrvc.products2().subscribe(data => console.log(data))
   }
   detailsPage(pro) {
     this.prdSrvc.detailsPage(pro)
   }
-
   filterSize(pro, size) {
     this.prdSrvc.filterSize(pro, size)
     this.proSize = this.prdSrvc.proSize;
